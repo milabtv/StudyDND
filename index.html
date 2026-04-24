@@ -9,6 +9,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -20,37 +21,67 @@
             flex-direction: column;
         }
 
-        header {
-            padding: 1.5rem 10%;
+        /* ----- МЕНЮ ----- */
+        nav {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 1rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1f2937;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        header {
+            padding: 3rem 10% 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .logo {
             font-weight: 800;
             letter-spacing: 0.15em;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             color: #38bdf8;
         }
 
         .tagline {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #9ca3af;
         }
 
         main {
-            flex: 1;
             display: flex;
             flex-wrap: wrap;
-            padding: 2rem 10% 3rem;
-            gap: 3rem; /* Малко повече разстояние между текст и картинка */
+            padding: 2rem 10% 4rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .hero-text {
             flex: 1 1 350px;
-            max-width: 500px; /* Малко по-тесен текст, за да има място за голяма картина */
+            max-width: 500px;
         }
 
         .hero-text h1 {
@@ -59,9 +90,8 @@
             line-height: 1.1;
         }
 
-        .highlight {
-            color: #facc15;
-        }
+        .highlight { color: #facc15; }
+        .blue-highlight { color: #38bdf8; }
 
         .hero-text p {
             margin-bottom: 1.2rem;
@@ -81,25 +111,8 @@
             margin-bottom: 0.8rem;
         }
 
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .badge {
-            padding: 0.4rem 0.9rem;
-            border-radius: 999px;
-            background: rgba(17, 24, 39, 0.8);
-            border: 1px solid #374151;
-            font-size: 0.8rem;
-            color: #e5e7eb;
-        }
-
-        /* ----- СЕКЦИЯ ЗА ГОЛЯМАТА КАРТИНКА ----- */
         .hero-visual {
-            flex: 1.5 1 450px; /* Увеличено от 1 на 1.5 за повече ширина */
+            flex: 1.5 1 450px;
             display: flex;
             justify-content: center;
         }
@@ -108,12 +121,11 @@
             background: radial-gradient(circle at top, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.98));
             border-radius: 1.5rem;
             border: 1px solid #1f2937;
-            padding: 0.8rem; /* Намален паддинг, за да изпъкне картинката */
-            max-width: 600px; /* Увеличена максимална ширина */
+            padding: 0.8rem;
+            max-width: 600px;
             width: 100%;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
             position: relative;
-            overflow: hidden;
         }
 
         .card img {
@@ -121,86 +133,101 @@
             height: auto;
             border-radius: 1rem;
             display: block;
-            object-fit: cover;
         }
 
-        /* ----- СЕКЦИЯ С ЛИНКОВЕ ----- */
-        section.resources {
-            padding: 0 10% 3rem;
+        /* ----- СЕКЦИЯ РОДИТЕЛИ ----- */
+        .parents-section {
+            padding: 4rem 10%;
+            background: rgba(15, 23, 42, 0.4);
+            border-top: 1px solid #1f2937;
+            border-bottom: 1px solid #1f2937;
         }
 
-        .resources-title {
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
+        .parents-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
+        .parents-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .parents-content p {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .parent-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .parent-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.95rem;
+        }
+
+        .parent-features li::before {
+            content: "✓";
+            color: #facc15;
+            font-weight: bold;
+        }
+
+        /* ----- СЕКЦИЯ РЕСУРСИ ----- */
+        .resources { padding: 4rem 10%; }
+        .resources-title { margin-bottom: 2rem; font-size: 1.5rem; }
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
-
         .resource-card {
             background: rgba(15, 23, 42, 0.9);
             border-radius: 1rem;
-            padding: 1.2rem 1.4rem;
-            border: 1px solid #111827;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+            padding: 1.5rem;
+            border: 1px solid #1f2937;
         }
-
-        .resource-card h3 {
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-            color: #e5e7eb;
-        }
-
-        .resource-card p {
-            font-size: 0.9rem;
-            color: #d1d5db;
-            line-height: 1.5;
-        }
-
         .resource-link {
-            margin-top: 0.4rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 0.4rem;
-            padding: 0.6rem 1.1rem;
-            border-radius: 999px;
-            border: 1px solid #4b5563;
-            background: rgba(17, 24, 39, 0.9);
+            margin-top: 1rem;
+            display: inline-block;
+            color: #38bdf8;
             text-decoration: none;
-            font-size: 0.9rem;
             font-weight: 500;
-            color: #e5e7eb;
         }
 
         footer {
-            padding: 1rem 10%;
+            padding: 2rem 10%;
+            text-align: center;
             font-size: 0.8rem;
             color: #6b7280;
-            border-top: 1px solid #111827;
-            background: rgba(3, 7, 18, 0.95);
+            background: #020617;
         }
 
-        @media (max-width: 768px) {
-            header, main, section.resources, footer {
-                padding-inline: 1.5rem;
-            }
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.3rem;
-            }
+        @media (max-width: 900px) {
+            .parents-container { grid-template-columns: 1fr; }
+            nav { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<header>
+<nav>
+    <div class="logo">STUDY DND</div>
+    <div class="nav-links">
+        <a href="#home">Начало</a>
+        <a href="#parents">За родители</a>
+        <a href="#materials">Материали</a>
+    </div>
+</nav>
+
+<header id="home">
     <div class="logo">STUDY DND</div>
     <div class="tagline">Образователна фентъзи игра за 6. клас</div>
 </header>
@@ -211,17 +238,12 @@
         <h1>Приключения, <span class="highlight">знания</span> и критично мислене</h1>
         <p>
             <strong>STUDY DND</strong> комбинира вълнуващи фентъзи мисии с учебното съдържание по
-            <strong>география и история за 6. клас</strong>. Учениците се превръщат в герои, които
-            обикалят тайни земи, вземат решения и решават предизвикателства.
+            <strong>география и история за 6. клас</strong>. Учениците се превръщат в герои, които решават предизвикателства и отключват знания.
         </p>
-        <p>
-            Играта насърчава <strong>критично мислене</strong>, работа в екип и умения за решаване на проблеми.
-        </p>
-
         <div class="hero-badges">
-            <div class="badge">За ученици от 6. клас</div>
+            <div class="badge">6. Клас</div>
             <div class="badge">География + История</div>
-            <div class="badge">Проекто-базирано обучение</div>
+            <div class="badge">Учене чрез игра</div>
         </div>
     </div>
 
@@ -232,31 +254,50 @@
     </div>
 </main>
 
-<section class="resources">
-    <h2 class="resources-title">Материали по проекта STUDY DND</h2>
+<section class="parents-section" id="parents">
+    <div class="parents-container">
+        <div class="parents-content">
+            <div class="pill" style="border-color: #38bdf8; color: #38bdf8;">Подкрепа</div>
+            <h2>Как помагаме на <span class="blue-highlight">родителите</span>?</h2>
+            <p>
+                StudyDND подпомага не само учениците, но и родителите, като им предоставя възможност да проследяват напредъка на детето си в реално време.
+            </p>
+            <p>
+                Чрез платформата можете по-лесно да се ориентирате в учебния процес и да бъдете по-ангажирани с успехите на Вашето дете, създавайки по-добра среда за учене у дома.
+            </p>
+            <ul class="parent-features">
+                <li>Проследяване на усвоените теми</li>
+                <li>Визуализация на резултатите от задачите</li>
+                <li>Идентифициране на области за допълнителна подготовка</li>
+                <li>Насърчаване на комуникацията родител-дете</li>
+            </ul>
+        </div>
+        <div class="resource-card" style="background: rgba(56, 189, 248, 0.05); border-color: #38bdf844;">
+            <h3 style="margin-bottom: 1rem; color: #38bdf8;">Вашата роля</h3>
+            <p style="font-style: italic; font-size: 0.95rem;">
+                "StudyDND цели да направи образованието по-достъпно и разбираемо за целия семеен кръг, насърчавайки сътрудничеството и активното участие на родителите."
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="resources" id="materials">
+    <h2 class="resources-title">Материали по проекта</h2>
     <div class="resources-grid">
         <div class="resource-card">
-            <h3>Scratch файл</h3>
-            <p>Чрез този файл може да се разгледа и тества базовата механика на играта.</p>
-            <a class="resource-link" href="https://scratch.mit.edu/projects/1252773269" target="_blank">
-                <span>🧩</span> Отвори Scratch проекта
-            </a>
+            <h3>Scratch проект</h3>
+            <p>Тествайте базовата механика и игровата логика.</p>
+            <a class="resource-link" href="https://scratch.mit.edu/projects/1252773269" target="_blank">🧩 Отвори проекта</a>
         </div>
-
         <div class="resource-card">
             <h3>Презентация</h3>
-            <p>Представя идеята, целите, героите и основните мисии в STUDY DND.</p>
-            <a class="resource-link" href="https://www.canva.com/design/DAG7OvoC5pE/71XaejYIdRsJ6QC0xlm5Ew/edit?utm_content=DAG7OvoC5pE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">
-                <span>📽️</span> Виж презентацията
-            </a>
+            <p>Цели, герои и основни мисии на STUDY DND.</p>
+            <a class="resource-link" href="https://www.canva.com/..." target="_blank">📽️ Виж презентацията</a>
         </div>
-
         <div class="resource-card">
             <h3>Документация</h3>
-            <p>План за действие, сценарий на мисиите и допълнителни материали.</p>
-            <a class="resource-link" href="https://drive.google.com/drive/folders/1yphwqAVaQblKA7F4pr2Jr6Uq6TrIiLd7?usp=sharing" target="_blank">
-                <span>📂</span> Отвори документите
-            </a>
+            <p>Пълен сценарий и учебни материали.</p>
+            <a class="resource-link" href="https://drive.google.com/..." target="_blank">📂 Документи</a>
         </div>
     </div>
 </section>

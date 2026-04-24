@@ -44,13 +44,13 @@
             display: flex;
             flex-wrap: wrap;
             padding: 2rem 10% 3rem;
-            gap: 2.5rem;
+            gap: 3rem; /* Малко повече разстояние между текст и картинка */
             align-items: center;
         }
 
         .hero-text {
-            flex: 1 1 320px;
-            max-width: 540px;
+            flex: 1 1 350px;
+            max-width: 500px; /* Малко по-тесен текст, за да има място за голяма картина */
         }
 
         .hero-text h1 {
@@ -97,9 +97,9 @@
             color: #e5e7eb;
         }
 
+        /* ----- СЕКЦИЯ ЗА ГОЛЯМАТА КАРТИНКА ----- */
         .hero-visual {
-            flex: 1 1 auto;
-            width: 70%;
+            flex: 1.5 1 450px; /* Увеличено от 1 на 1.5 за повече ширина */
             display: flex;
             justify-content: center;
         }
@@ -108,107 +108,23 @@
             background: radial-gradient(circle at top, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.98));
             border-radius: 1.5rem;
             border: 1px solid #1f2937;
-            padding: 1.4rem 1.4rem 1.2rem;
-            max-width: 360px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            padding: 0.8rem; /* Намален паддинг, за да изпъкне картинката */
+            max-width: 600px; /* Увеличена максимална ширина */
+            width: 100%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
             position: relative;
             overflow: hidden;
         }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            inset: -40%;
-            background: radial-gradient(circle at 10% 0, rgba(250, 204, 21, 0.12), transparent 55%);
-            pointer-events: none;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-title {
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .card-pill {
-            font-size: 0.75rem;
-            padding: 0.2rem 0.7rem;
-            border-radius: 999px;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid #4b5563;
-            color: #e5e7eb;
-        }
-
-        .world-map {
-            border-radius: 1.2rem;
-            border: 1px solid #1f2937;
-            padding: 0.9rem;
-            background: rgba(15, 23, 42, 0.9);
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .world-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0.4rem;
-        }
-
-        .region {
-            padding: 0.45rem 0.3rem;
-            border-radius: 0.7rem;
-            text-align: center;
-            font-size: 0.7rem;
-            border: 1px solid #374151;
-            background: radial-gradient(circle at top, rgba(34, 197, 94, 0.35), rgba(15, 23, 42, 0.98));
-        }
-
-        .region.secondary {
-            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.35), rgba(15, 23, 42, 0.98));
-        }
-
-        .region span {
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
             display: block;
-            font-size: 0.65rem;
-            color: #9ca3af;
-            margin-top: 0.15rem;
+            object-fit: cover;
         }
 
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.75rem;
-            color: #9ca3af;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-stat {
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
-        }
-
-        .card-stat strong {
-            color: #e5e7eb;
-            font-size: 0.8rem;
-        }
-
-        .card-icon {
-            font-size: 1.3rem;
-        }
-
-        /* ----- Секция с линкове ----- */
-
+        /* ----- СЕКЦИЯ С ЛИНКОВЕ ----- */
         section.resources {
             padding: 0 10% 3rem;
         }
@@ -262,10 +178,6 @@
             color: #e5e7eb;
         }
 
-        .resource-link span {
-            font-size: 1.1rem;
-        }
-
         footer {
             padding: 1rem 10%;
             font-size: 0.8rem;
@@ -275,14 +187,9 @@
         }
 
         @media (max-width: 768px) {
-            header {
+            header, main, section.resources, footer {
                 padding-inline: 1.5rem;
             }
-
-            main, section.resources, footer {
-                padding-inline: 1.5rem;
-            }
-
             header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -292,54 +199,45 @@
     </style>
 </head>
 <body>
+
 <header>
     <div class="logo">STUDY DND</div>
     <div class="tagline">Образователна фентъзи игра за 6. клас</div>
 </header>
 
-<!-- ОПИСАНИЕ НА ПРОЕКТА -->
 <main>
     <div class="hero-text">
         <div class="pill">Образователна фентъзи игра</div>
-        <h1>
-            Приключения, <span class="highlight">знания</span> и критично мислене
-        </h1>
+        <h1>Приключения, <span class="highlight">знания</span> и критично мислене</h1>
         <p>
             <strong>STUDY DND</strong> комбинира вълнуващи фентъзи мисии с учебното съдържание по
             <strong>география и история за 6. клас</strong>. Учениците се превръщат в герои, които
-            обикалят тайни земи, вземат решения и решават предизвикателства, за да отключват нови знания.
+            обикалят тайни земи, вземат решения и решават предизвикателства.
         </p>
         <p>
-            Играта насърчава <strong>критично мислене</strong>, работа в екип и умения за решаване на проблеми,
-            докато учениците напредват чрез куестове, пъзели и интерактивни карти.
+            Играта насърчава <strong>критично мислене</strong>, работа в екип и умения за решаване на проблеми.
         </p>
-
 
         <div class="hero-badges">
             <div class="badge">За ученици от 6. клас</div>
             <div class="badge">География + История</div>
             <div class="badge">Проекто-базирано обучение</div>
         </div>
-        
     </div>
+
     <div class="hero-visual">
         <div class="card">
-            <img src="От Денис и Дамла.jpg" alt="Study DnD Visual" style="width: 100%; height: auto; border-radius: 1rem; display: block;">
+            <img src="kartinka.jpg" alt="Study DnD Visual">
         </div>
     </div>
+</main>
 
-    
-<!-- СЕКЦИИ С ЛИНКОВЕ -->
 <section class="resources">
     <h2 class="resources-title">Материали по проекта STUDY DND</h2>
-
     <div class="resources-grid">
         <div class="resource-card">
             <h3>Scratch файл</h3>
-            <p>
-                Игровата логика и част от визуализациите са реализирани в Scratch. 
-                Чрез този файл може да се разгледа и тества базовата механика на играта.
-            </p>
+            <p>Чрез този файл може да се разгледа и тества базовата механика на играта.</p>
             <a class="resource-link" href="https://scratch.mit.edu/projects/1252773269" target="_blank">
                 <span>🧩</span> Отвори Scratch проекта
             </a>
@@ -347,21 +245,15 @@
 
         <div class="resource-card">
             <h3>Презентация</h3>
-            <p>
-                Презентацията представя идеята, целите, героите, картите и основните мисии 
-                в STUDY DND – подходяща за представяне пред жури, учители и съученици.
-            </p>
+            <p>Представя идеята, целите, героите и основните мисии в STUDY DND.</p>
             <a class="resource-link" href="https://www.canva.com/design/DAG7OvoC5pE/71XaejYIdRsJ6QC0xlm5Ew/edit?utm_content=DAG7OvoC5pE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">
                 <span>📽️</span> Виж презентацията
             </a>
         </div>
 
         <div class="resource-card">
-            <h3>Документация и файлове</h3>
-            <p>
-                Подробна документация, план за действие, сценарий на мисиите и допълнителни материали, 
-                свързани с разработката и учебното съдържание.
-            </p>
+            <h3>Документация</h3>
+            <p>План за действие, сценарий на мисиите и допълнителни материали.</p>
             <a class="resource-link" href="https://drive.google.com/drive/folders/1yphwqAVaQblKA7F4pr2Jr6Uq6TrIiLd7?usp=sharing" target="_blank">
                 <span>📂</span> Отвори документите
             </a>
@@ -372,5 +264,6 @@
 <footer>
     STUDY DND – Образователна фентъзи игра • Учебна година 2025/2026
 </footer>
+
 </body>
 </html>
